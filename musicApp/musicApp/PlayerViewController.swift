@@ -9,17 +9,13 @@ import AVFoundation
 import UIKit
 
 class PlayerViewController: ViewController {
-    
 
-    
     @IBOutlet var holder: UIView!
     
     public var position = 0
     var arrayOfSongs: [Song] = []
     var player: AVAudioPlayer?
-    
     let playButton = UIButton()
-    
     let pauseButton = UIButton()
     
     private let albumImageView: UIImageView = {
@@ -49,12 +45,6 @@ class PlayerViewController: ViewController {
         return label
     }()
     
-    
-    
- 
-    
-
-
     override func viewDidLoad() {
         super.viewDidLoad()
         playButton.isHidden = true
@@ -90,6 +80,8 @@ class PlayerViewController: ViewController {
             print("error")
         }
         // set up UI elements
+        
+        // image
         
         albumImageView.frame = CGRect(x: 10,
                                       y: 10,
@@ -141,7 +133,7 @@ class PlayerViewController: ViewController {
         nextButton.tintColor = .black
         prevButton.tintColor = .black
         
-        let yPosition =  artistNameLabel.frame.origin.y + 70 + 70 + 10
+        let yPosition = artistNameLabel.frame.origin.y + 70 + 70 + 10
         let size: CGFloat = 60
         
         playButton.frame = CGRect(x: (holder.frame.size.width - size) / 2,
@@ -233,6 +225,8 @@ class PlayerViewController: ViewController {
             for subview in holder.subviews {
                 subview.removeFromSuperview()
             }
+            playButton.isHidden = false
+            pauseButton.isHidden = true
             configure()
         }
     }
@@ -244,6 +238,8 @@ class PlayerViewController: ViewController {
             for subview in holder.subviews {
                 subview.removeFromSuperview()
             }
+            playButton.isHidden = true
+            pauseButton.isHidden = false
             configure()
         }
     }
